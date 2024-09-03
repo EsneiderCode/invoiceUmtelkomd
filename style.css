@@ -8,6 +8,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
+  align-items: center;
 }
 
 nav {
@@ -26,6 +27,7 @@ header p {
   color: #1f487c;
   font-weight: bold;
 }
+
 .container {
   max-width: 800px;
   height: fit-content;
@@ -35,6 +37,7 @@ header p {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 h1 {
   text-align: center;
   color: #333;
