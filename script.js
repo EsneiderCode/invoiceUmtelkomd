@@ -179,7 +179,7 @@ document.getElementById("generateInvoice").addEventListener("click", function ()
   }
 
   // Redirigir a la página de facturación
-  window.location.href = "https://esneidercode.github.io/invoiceUmtelkomd/invoicing/invoice.html";
+  window.location.href = "https://esneidercode.github.io/invoiceUmtelkomd/invoicing";
 });
 
 async function importServicesFromDrive() {
