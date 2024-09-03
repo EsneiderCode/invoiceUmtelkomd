@@ -49,13 +49,14 @@
                     <div class="input__container">
                         <label for="price">Precio:</label>
                         <input type="number" id="price" name="price" step="0.01"
+                            min="0.00"
                             required />
                         <label for="price">€</label>
                     </div>
                 </div>
 
                 <label for="quantity">Cantidad:</label>
-                <input type="number" id="quantity" required />
+                <input type="number" id="quantity" min="0" required />
 
                 <div class="input__container">
                     <label for="notes__textarea">Notas:</label>
