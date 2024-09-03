@@ -1,0 +1,194 @@
+body {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 800px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid black;
+  background: #fdfbf5;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+  border-bottom: 2px solid black;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+header img {
+  height: 50px;
+  margin-bottom: -10px;
+}
+
+header p {
+  color: #1f487c;
+  font-weight: bold;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.company-details .details__title {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.details__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.invoice-info {
+  margin-bottom: 20px;
+}
+
+.invoice-info strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.invoice-info #invoice-number {
+  font-weight: bold;
+}
+
+#invoice-info .date {
+  margin-top: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+}
+.totals {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 40px;
+}
+
+.totals table {
+  width: auto;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.totals td {
+  padding: 8px 15px;
+  border: 1px solid black;
+  text-align: right;
+}
+
+.totals tr:first-child td {
+  border-top: none;
+}
+
+.totals tr td:first-child {
+  text-align: left;
+  font-weight: bold;
+}
+
+.totals tr:last-child td {
+  color: white;
+  background-color: #299482;
+  font-weight: bold;
+}
+
+.notes {
+  font-size: 14px;
+  margin-bottom: 50px;
+}
+
+.footer {
+  font-size: 14px;
+  padding-top: 10px;
+  margin-top: auto;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer .bank-details {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 25px;
+  border-top: 2px solid black;
+}
+
+.bank-details p {
+  text-align: justify;
+}
+
+.btn-back {
+  background: #4f4545;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.btn-back:hover {
+  background: rgb(249, 236, 220);
+  color: black;
+}
+
+@media print {
+  @page {
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .footer {
+    margin-top: 20px;
+  }
+
+  .no-print {
+    display: none;
+  }
+}

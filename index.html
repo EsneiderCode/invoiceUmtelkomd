@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Servicios Umtelkomd</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+            rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+            <nav>
+                <header>
+                    <img src="../images/logo.png" alt="logo" />
+                    <p>Wir verbinden dich!</p>
+                </header>
+                <h1>FACTURACION DE SERVICIOS</h1>
+            </nav>
+
+            <div class="input__container">
+                <label for="invoice">Rechnung:</label>
+                <input type="text" id="invoiceNumber" />
+            </div>
+
+            <form id="productForm">
+                <div class="input__container choose__service-container">
+                    <label for="choose__service">Seleccionar servicio importado?</label>
+                    <input type="checkbox" name="choose__service"
+                        id="choose__service" />
+                </div>
+
+                <div class="input__container imported__services">
+                    <label for="productSelect">Servicio:</label>
+                    <select id="productSelect">
+                        <!-- Servicios importados se mostrarán aquí -->
+                    </select>
+                </div>
+
+                <div class="manual__services">
+                    <div class="input__container">
+                        <label for="service">Servicio:</label>
+                        <input type="text" id="service" name="service" required />
+                    </div>
+
+                    <div class="input__container">
+                        <label for="price">Precio:</label>
+                        <input type="number" id="price" name="price" step="0.01"
+                            required />
+                        <label for="price">€</label>
+                    </div>
+                </div>
+
+                <label for="quantity">Cantidad:</label>
+                <input type="number" id="quantity" required />
+
+                <div class="input__container">
+                    <label for="notes__textarea">Notas:</label>
+
+                    <textarea id="notes__textarea"></textarea>
+                </div>
+
+                <button type="submit">Agregar Servicio</button>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>BESCHREIBUNG</th>
+                        <th>MENGE</th>
+                        <th>GESAMTPREIS</th>
+                        <th>OPCIONES</th>
+                    </tr>
+                </thead>
+                <tbody id="productTableBody">
+                    <!-- Services will be put here -->
+                </tbody>
+            </table>
+
+            <button class="btn-generate" id="generateInvoice">Generar Factura</button>
+        </div>
+        <script src="./script.js"></script>
+    </body>
+</html>

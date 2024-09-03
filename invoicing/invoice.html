@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Rechnung 2024/00064</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <header>
+                <img src="../images/logo.png" alt="logo" />
+                <p>Wir verbinden dich!</p>
+            </header>
+
+            <section class="about">
+
+                <div class="company-details">
+                    <p class="details__title">UMTELKOMD GmbH – Bassendorf 21,
+                        18513 Deyelsdorf</p>
+                    <ul class="details__list">
+                        <li>Insyte Deutschland GmbH</li>
+                        <li>Stadionring 32</li>
+                        <li>40878 Ratingen</li>
+                        <li>USt.: DE814917250</li>
+                    </ul>
+                </div>
+
+                <div class="invoice-info">
+                    <div id="invoice-number">Rechnung 2024/00064</div>
+                    <div class="date">Rechnungsdatum: <span id="fecha"></span></div>
+                </div>
+
+            </section>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>BESCHREIBUNG</th>
+                        <th>MENGE</th>
+                        <th>GESAMTPREIS</th>
+                    </tr>
+                </thead>
+                <!-- <tbody>
+                    <tr>
+                        <td>Hausanschluss KW 31, Höxter Nord</td>
+                        <td>1.0</td>
+                        <td>7,080.00 €</td>
+                    </tr>
+                </tbody> -->
+                <tbody id="productTableBody">
+                    <!-- Productos se agregarán aquí -->
+                </tbody>
+            </table>
+
+            <button class="btn-back no-print "
+                onclick="window.location.href='../index.html'">Volver
+                al Formulario</button>
+
+            <div class="totals">
+                <table>
+                    <tr>
+                        <td>Nettobetrag</td>
+                        <td id="computedSumAllPricesContainer">7,080.00 €</td>
+                    </tr>
+                    <tr>
+                        <td>USt 19%</td>
+                        <td id="computedIvaContainer">1,345.20 €</td>
+                    </tr>
+                    <tr>
+                        <td class="amount">Gesamt</td>
+                        <td class="amount" id="totalValueContainer">8,425.20 €</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="footer">
+
+                <div class="bank-details">
+                    <p>UMTELKOMD GmbH – Pommersche Volksbank eG – IBAN: DE76
+                        1309 1054 0001 3428 60
+                        – BIC: GENODEF1HST Sitz der Gesellschaft: Bassendorf 21,
+                        18513 Deyelsdorf,
+                        Mecklenburg – Vorpommern Tel.: 038334-670965 – M.
+                        0176-72195317 – Mail:
+                        umtelkomd@gmail.com Geschäftsführung: Juan Lesmes
+                        Linares Handelsregister:
+                        Stralsund – HRB 21535 – USt-IdNr. DE 342168532</p>
+                </div>
+            </div>
+        </div>
+        <script src="./script.js"></script>
+    </body>
+</html>
