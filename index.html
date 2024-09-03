@@ -49,7 +49,6 @@
                     <div class="input__container">
                         <label for="price">Precio:</label>
                         <input type="number" id="price" name="price" step="0.01"
-                            min="0.00"
                             required />
                         <label for="price">€</label>
                     </div>
@@ -84,30 +83,6 @@
             <button class="btn-generate" id="generateInvoice">Generar Factura</button>
         </div>
 
-        <!-- Ventana Modal -->
-        <div id="modal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn">&times;</span>
-                <h2>Agregar Servicio</h2>
-                <form id="serviceForm">
-                    <label for="service">Servicio:</label>
-                    <input type="text" id="service" name="service" required>
-
-                    <label for="quantity">Cantidad:</label>
-                    <input type="number" id="quantity" name="quantity" min="1"
-                        required>
-
-                    <label for="price">Precio:</label>
-                    <input type="number" id="price" name="price" step="0.01"
-                        min="0" required>
-
-                    <div class="modal-buttons">
-                        <button type="submit">Guardar</button>
-                        <button type="button" id="cancelBtn">Cancelar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
         <script src="./script.js"></script>
     </body>
 </html>
