@@ -28,6 +28,7 @@ header p {
 }
 .container {
   max-width: 800px;
+  height: fit-content;
   margin: 0 auto;
   padding: 40px;
   background: #dae9eee0;
