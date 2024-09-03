@@ -16,6 +16,7 @@ nav {
   justify-content: space-around;
   align-items: center;
   margin-bottom: 30px;
+  gap: 100px;
 }
 
 header img {
@@ -31,7 +32,7 @@ header p {
 .container {
   max-width: 800px;
   height: fit-content;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 40px;
   background: #dae9eee0;
   border-radius: 8px;
