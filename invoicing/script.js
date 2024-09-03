@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     quantityCell.textContent = product.quantity;
 
     const priceCell = document.createElement("td");
-    priceCell.textContent = `${product.price} €`;
+    priceCell.textContent = `${product.price * product.quantity} €`;
     sumAllPrices += parseFloat(product.price);
     newRow.appendChild(serviceCell);
     newRow.appendChild(quantityCell);
