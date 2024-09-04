@@ -6,7 +6,7 @@ const computedIvaContainer = document.getElementById("computedIvaContainer");
 const totalValueContainer = document.getElementById("totalValueContainer");
 
 const invoiceNumberElement = document.getElementById("invoice-number");
-const products = JSON.parse(localStorage.getItem("services")) || [];
+const products = JSON.parse(localStorage.getItem("products")) || [];
 const invoiceNumber = JSON.parse(localStorage.getItem("invoice")) || "";
 const notes = JSON.parse(localStorage.getItem("notes")) || "";
 const tableBody = document.getElementById("productTableBody");
@@ -25,8 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
     quantityCell.textContent = product.quantity;
 
     const priceCell = document.createElement("td");
-    priceCell.textContent = `${product.price * product.quantity} €`;
-    sumAllPrices += parseFloat(product.price * product.quantity);
+    priceCell.textContent = `${product.total_price} €`;
+    sumAllPrices += parseFloat(product.total_price);
     newRow.appendChild(serviceCell);
     newRow.appendChild(quantityCell);
     newRow.appendChild(priceCell);

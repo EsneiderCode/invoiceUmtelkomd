@@ -1,4 +1,4 @@
-let products = JSON.parse(localStorage.getItem("services")) || [];
+let products = JSON.parse(localStorage.getItem("products")) || [];
 const invoiceNumberContainer = document.getElementById("invoiceNumber");
 const textAreaNotesContainer = document.getElementById("notes__textarea");
 const serviceContainer = document.getElementById("service");
@@ -46,71 +46,70 @@ function hideImportedServicesContainer() {
   toggleManualServicesContainer(false);
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+function renderTable() {
+  const tableBody = document.querySelector('#productTableBody');
+  tableBody.innerHTML = '';
   products.forEach((product, index) => {
-    addProductRow(product, index, true);
+      const row = document.createElement('tr');
+      row.innerHTML = `
+          <td>${product.service}</td>
+          <td>${product.quantity}</td>
+          <td>${product.total_price}</td>
+          <td>
+              <button class="btn btn-edit" onclick="editRow(${index})">Editar</button>
+              <button class="btn btn-delete" onclick="deleteRow(${index})">Eliminar</button>
+          </td>
+      `;
+      tableBody.appendChild(row);
   });
+
   invoiceNumberContainer.value = invoiceNumber;
   textAreaNotesContainer.value = textAreaNotes;
-});
-
-function addProductRow(product, index, includeDelete = true) {
-  const tableBody = getProductTableBody();
-  const newRow = createProductRow(product, index, includeDelete);
-  tableBody.appendChild(newRow);
 }
 
-function getProductTableBody() {
-  return document.getElementById("productTableBody");
+document.addEventListener("DOMContentLoaded", renderTable);
+
+
+function editRow(index) {
+  const row = document.querySelectorAll('#productTableBody tr')[index];
+  const cells = row.querySelectorAll('td');
+
+  cells[0].innerHTML = `<input type="text" value="${products[index].service}" />`;
+  cells[1].innerHTML = `<input type="number" min="1" value="${products[index].quantity}" />`;
+
+  // Cambiar el botón de editar a guardar
+  cells[3].innerHTML = `
+      <button class="btn btn-save" onclick="saveRow(${index})">Guardar</button>
+      <button class="btn btn-delete" onclick="deleteRow(${index})">Eliminar</button>
+  `;
 }
 
-function createProductRow(product, index, includeDelete) {
-  const priceString = `${(parseFloat(product.price) * parseFloat(product.quantity)).toFixed(2)} €`;
-  const newRow = document.createElement("tr");
+function saveRow(index) {
+  const row = document.querySelectorAll('#productTableBody tr')[index];
+  const inputs = row.querySelectorAll('input');
+  let service = inputs[0].value;
+  let quantity = parseInt(inputs[1].value);
+  let unit_price = parseFloat(products[index].unit_price);
 
-  const descriptionCell = document.createElement("td");
-  descriptionCell.textContent = product.service;
+  products[index] = {
+      service,
+      quantity,
+      unit_price,
+      total_price: unit_price * quantity
+  };
 
-  const quantityCell = document.createElement("td");
-  quantityCell.textContent = product.quantity;
-
-  const priceCell = document.createElement("td");
-  priceCell.textContent = priceString;
-
-  newRow.appendChild(descriptionCell);
-  newRow.appendChild(quantityCell);
-  newRow.appendChild(priceCell);
-
-  if (includeDelete) {
-    const deleteCell = document.createElement("td");
-    const deleteButton = document.createElement("button");
-    deleteButton.className = "btn-delete";
-    deleteButton.textContent = "Eliminar";
-    deleteButton.addEventListener("click", function () {
-      deleteProduct(index);
-    });
-    deleteCell.appendChild(deleteButton);
-    newRow.appendChild(deleteCell);
-  }
-
-  return newRow;
+  updateLocalStorage();
+  renderTable();
 }
 
-function deleteProduct(index) {
+function updateLocalStorage(){
+  localStorage.setItem("products", JSON.stringify(products));
+}
+
+function deleteRow(index) {
   products.splice(index, 1);
-  localStorage.setItem("services", JSON.stringify(products));
-  updateTable();
-}
-
-function updateTable() {
-  const tableBody = getProductTableBody();
-  tableBody.innerHTML = ""; // Limpiar la tabla
-  const fragment = document.createDocumentFragment();
-  products.forEach((product, index) => {
-    const newRow = createProductRow(product, index, true);
-    fragment.appendChild(newRow);
-  });
-  tableBody.appendChild(fragment);
+  updateLocalStorage();
+  renderTable();
 }
 
 function displayImportedServices() {
@@ -158,14 +157,14 @@ document.getElementById("productForm").addEventListener("submit", function (even
     priceFromInput ||
     importedProducts.find((s) => s.service === service)?.price;
   price = price ? parseFloat(price).toFixed(2) : "0.00";
-
-  products.push({ service, quantity, price });
+  const total_price = (parseFloat(price) * quantity).toFixed(2);
+  products.push({ service, quantity, unit_price: price, total_price });
 
   // Guardar productos en localStorage
-  localStorage.setItem("services", JSON.stringify(products));
+  updateLocalStorage();
 
   // Actualizar la tabla
-  updateTable();
+  renderTable();
 
   // Limpiar el formulario
   resetForm();
@@ -180,7 +179,6 @@ document.getElementById("generateInvoice").addEventListener("click", function ()
 
   // Redirigir a la página de facturación
   window.location.href = "https://esneidercode.github.io/invoiceUmtelkomd/invoicing/invoice.html";
- //window.location.href = "./invoicing/invoice.html";
 });
 
 async function importServicesFromDrive() {
